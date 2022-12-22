@@ -11,8 +11,7 @@ export default new Vuex.Store({
       { id: 3, titulo: "Ir ao Mercado", concluido: false },
     ],
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     adicionaTarefa(state, titulo) {
       if (titulo) {
@@ -23,12 +22,19 @@ export default new Vuex.Store({
         });
       }
     },
-    removeTarefa(state, id){
-      state.tarefas = state.tarefas.filter(tarefa => tarefa.id !== id)
+    removeTarefa(state, id) {
+      state.tarefas = state.tarefas.filter((tarefa) => tarefa.id !== id);
+    },
+    editaTarefa(state, novaTarefa) {
+      let tarefa = state.tarefas.filter(
+        (tarefa) => tarefa.id == novaTarefa.id
+      )[0];
+
+      tarefa.titulo = novaTarefa.titulo;
+      console.log(tarefa);
+      console.log(state.tarefas);
     },
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});

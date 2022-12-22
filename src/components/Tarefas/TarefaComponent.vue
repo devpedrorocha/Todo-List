@@ -20,7 +20,7 @@
           <!-- <v-btn icon @click.stop="handleRemoveTarefa(tarefa.id)">
             <v-icon color="blue darken-3">mdi-trash-can</v-icon>
           </v-btn> -->
-          <TarefaMenu />
+          <TarefaMenu :tarefa="tarefa" />
         </v-list-item-action>
       </template>
     </v-list-item>

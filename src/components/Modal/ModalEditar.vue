@@ -14,6 +14,7 @@
         <v-text-field
             label="Titulo"
             class="px-3"
+            v-model="tarefa.titulo"
             outlined
           ></v-text-field>
         <v-card-actions>
@@ -21,14 +22,14 @@
           <v-btn
             color="red darken-1"
             text
-            @click="dialog = false"
+            @click="closeModal"
           >
             Cancelar
           </v-btn>
           <v-btn
             color="primary"
             text
-            @click="dialog = false"
+            @click="editConfirmed"
           >
             Editar
           </v-btn>
@@ -40,10 +41,25 @@
 
 <script>
 export default {
+    props:['tarefaProp'],
     data(){
         return {
-            dialog: false,
+          dialog: true,
+          tarefa: null,
         }
+    },
+    methods:{
+      closeModal(){
+        this.$emit('closeModal')
+      },
+      editConfirmed(){
+        let novaTarefa = {titulo: this.tarefa.titulo, id: this.tarefa.id}
+        this.$store.commit('editaTarefa', novaTarefa)
+        this.$emit('closeModal')
+      }
+    },
+    created(){
+      this.tarefa = this.tarefaProp
     }
 }
 </script>
