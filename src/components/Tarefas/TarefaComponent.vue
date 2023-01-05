@@ -1,18 +1,18 @@
 <template>
   <div>
     <v-list-item
-      :class="{ 'blue lighten-4': tarefaAtual.concluido }"
-      @click="tarefaAtual.concluido = !tarefaAtual.concluido"
+      :class="{ 'blue lighten-4': tarefa.concluido }"
+      @click="changeValue"
     >
       <template v-slot:default="{}">
         <v-list-item-action>
-          <v-checkbox :input-value="tarefaAtual.concluido"></v-checkbox>
+          <v-checkbox :input-value="tarefa.concluido"></v-checkbox>
         </v-list-item-action>
 
         <v-list-item-content>
           <v-list-item-title
-            :class="{ 'text-decoration-line-through': tarefaAtual.concluido }"
-            >{{ tarefaAtual.titulo }}</v-list-item-title
+            :class="{ 'text-decoration-line-through': tarefa.concluido }"
+            >{{ tarefa.titulo }}</v-list-item-title
           >
         </v-list-item-content>
 
@@ -33,20 +33,19 @@ import TarefaMenu from "@/components/Tarefas/TarefaMenu.vue";
 
 export default {
   name: "TarefaComoponent",
-  props: {
-    tarefa: { type: Object },
-  },
+  props: ['tarefa'],
   components: { TarefaMenu },
   data() {
     return {
-      tarefaAtual: { ...this.tarefa },
+      tarefaConclude: this.tarefa
     };
   },
   methods: {
-    handleRemoveTarefa(id) {
-      this.$store.commit("removeTarefa", id);
-    },
+    changeValue() {
+      let tarefa = {id: this.tarefa.id, concluido: !this.tarefa.concluido}
+      this.$store.dispatch('concluirTarefa', tarefa)
   },
+}
 };
 </script>
 

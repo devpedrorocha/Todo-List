@@ -1,30 +1,20 @@
 <template>
   <div>
-    <v-col cols="12">
-      <v-text-field
-        v-model="campoInput"
-        label="Informe sua Task"
-        outlined
-        clearable
-        @keyup.enter="handleAddTask"
-      ></v-text-field>
-    </v-col>
-    <v-list flat subheader>
-      <v-list-item-group multiple active-class="">
-        <div v-for="(tarefa, index) in $store.state.tarefas" :key="index">
-          <TarefaComponent :tarefa="tarefa" />
-        </div>
-      </v-list-item-group>
-    </v-list>
+
+    <ListaDeTarefas/>
+    <div v-if="$store.state.tarefas.length == 0" class="mt-12 d-flex flex-column justify-center align-center animate__animated animate__bounceInUp">
+      <v-icon size="100" color="primary" class="d-flex justify-center">mdi-check</v-icon>
+      <p class="text-h5 primary--text">Todas tarefas concluídas !</p>
+    </div>
   </div>
 </template>
 
 <script>
-import TarefaComponent from "@/components/Tarefas/TarefaComponent.vue";
+import ListaDeTarefas from "@/components/Tarefas/ListaDeTarefas.vue"
 
 export default {
   name: "TarefasView",
-  components: { TarefaComponent },
+  components: { ListaDeTarefas },
   data() {
     return {
       campoInput: null,
@@ -32,9 +22,15 @@ export default {
   },
   methods: {
     handleAddTask() {
-      this.$store.commit('adicionaTarefa', this.campoInput)
+      this.$store.dispatch('adicionaTarefa', this.campoInput)
       this.campoInput = null;
     },
   },
+  created(){
+    this.$store.commit('buscaTarefas')
+  },
 };
 </script>
+
+<style>
+</style>

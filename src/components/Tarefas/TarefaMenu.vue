@@ -14,22 +14,29 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <ModalEditar v-if="items[0].modal" @closeModal="closeModal" @editConfirmed="edit" :tarefaProp="tarefa" />
+    <ModalEditar v-if="items[0].modal" @closeModal="closeModal" :tarefa="tarefa" />
+    <ModalDelete v-if="items[1].modal" @closeModal="closeModalDelete" :tarefa="tarefa" />
   </div>
 </template>
 
 <script>
+import ModalDelete from '../Modal/ModalDelete.vue';
 import ModalEditar from '../Modal/ModalEditar.vue';
 
 export default {
   props:['tarefa'],
     methods: {
     edit(){
-      console.log('Editou!');
+      this.items[0].modal = false;
+    },
+    deleteTask(){
       this.items[0].modal = false;
     },
     closeModal(){
       this.items[0].modal = false;
+    },
+    closeModalDelete(){
+      this.items[1].modal = false;
     }
   },
     data: () => ({
@@ -45,13 +52,14 @@ export default {
             {
                 icone: "mdi-trash-can",
                 title: "Excluir",
+                modal:false,
                 click() {
-                    console.log("excluir");
+                    this.modal = true
                 },
             },
         ],
     }),
-    components: { ModalEditar },
+    components: { ModalEditar, ModalDelete },
 };
 </script>
 

@@ -14,7 +14,7 @@
         <v-text-field
             label="Titulo"
             class="px-3"
-            v-model="tarefa.titulo"
+            v-model="titulo"
             outlined
           ></v-text-field>
         <v-card-actions>
@@ -41,11 +41,11 @@
 
 <script>
 export default {
-    props:['tarefaProp'],
+    props:['tarefa'],
     data(){
         return {
           dialog: true,
-          tarefa: null,
+          titulo: null,
         }
     },
     methods:{
@@ -53,14 +53,14 @@ export default {
         this.$emit('closeModal')
       },
       editConfirmed(){
-        let novaTarefa = {titulo: this.tarefa.titulo, id: this.tarefa.id}
-        this.$store.commit('editaTarefa', novaTarefa)
+        let novaTarefa = { titulo: this.titulo , id: this.tarefa.id}
         this.$emit('closeModal')
+        this.$store.dispatch('editaTarefa', novaTarefa)
       }
     },
     created(){
-      this.tarefa = this.tarefaProp
-    }
+      this.titulo = this.tarefa.titulo
+    },
 }
 </script>
 
