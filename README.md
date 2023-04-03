@@ -1,5 +1,5 @@
 # Todo List
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/devpedrorocha/controle-academico/blob/main/LICENCE) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/devpedrorocha/Todo-List/blob/main/LICENCE) 
 
 # Sobre o projeto
 
