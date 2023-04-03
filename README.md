@@ -5,10 +5,10 @@
 
 O projeto consiste em uma lista de tarefas desenvolvida utilizando Vue.js. Este projeto foi construído a partir de uma playlist gratuita disponível no YouTube, com o objetivo de aprender mais sobre essa tecnologia promissora. A lista de tarefas é uma aplicação simples, porém funcional, que permite a criação, edição e exclusão de tarefas com facilidade. 
 
-## Layout web
-![Web 1]()
+## Layout 
+![Web 1](https://github.com/devpedrorocha/Todo-List/blob/main/src/assets/screenshot-home-page )
 
-![Web 2]()
+![Web 2](https://github.com/devpedrorocha/Todo-List/blob/main/src/assets/screenshot-about-page)
 
 
 ## Front end
@@ -31,10 +31,7 @@ Pré-requisitos: npm / yarn
 
 ```bash
 # clonar repositório
-git clone https://github.com/devpedrorocha/controle-academico.git
-
-# entrar na pasta do projeto front end web
-cd front-web
+git clone https://github.com/devpedrorocha/Todo-List.git
 
 # instalar dependências
 yarn install
