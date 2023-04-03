@@ -34,7 +34,7 @@ Pré-requisitos: npm / yarn
 git clone https://github.com/devpedrorocha/Todo-List.git
 
 # instalar dependências
-yarn install
+yarn
 
 # executar o projeto
 yarn start
