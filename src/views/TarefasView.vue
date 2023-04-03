@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <ListaDeTarefas/>
     <div v-if="$store.state.tarefas.length == 0" class="mt-12 d-flex flex-column justify-center align-center animate__animated animate__bounceInUp">
       <v-icon size="100" color="primary" class="d-flex justify-center">mdi-check</v-icon>
